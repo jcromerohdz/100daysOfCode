@@ -17,14 +17,39 @@
 // })
 
 //JS promises stand alone
+// let price = new Promise(function(resolve, reject){
+//     setTimeout(function(){
+//         resolve(99.99);
+//     }, 300);
+// })
+
+// price.then(function(price){
+//     console.log(price);
+// })
+
+//JS promises iterables
 let price = new Promise(function(resolve, reject){
     setTimeout(function(){
         resolve(99.99);
     }, 300);
 })
 
-price.then(function(price){
-    console.log(price);
+let slowprice = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        reject("Could not retreive Price");
+    }, 800);
+})
+
+function greet(){
+    return "Hello";
+}
+
+let promises = [price, slowprice, 200, greet()];
+
+Promise.all(promises).then(function(resolvedPromises){
+    console.log(resolvedPromises);
+}).catch(function(error){
+    console.log(error);
 })
 
 
