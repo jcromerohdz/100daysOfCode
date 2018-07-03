@@ -30,13 +30,13 @@
 //JS promises iterables
 let price = new Promise(function(resolve, reject){
     setTimeout(function(){
-        resolve(99.99);
+        resolve("Price A");
     }, 300);
 })
 
 let slowprice = new Promise(function(resolve, reject){
     setTimeout(function(){
-        reject("Could not retreive Price");
+        resolve("Price B");
     }, 800);
 })
 
@@ -44,13 +44,17 @@ function greet(){
     return "Hello";
 }
 
-let promises = [price, slowprice, 200, greet()];
+let promises = [price, slowprice];
 
-Promise.all(promises).then(function(resolvedPromises){
-    console.log(resolvedPromises);
-}).catch(function(error){
-    console.log(error);
+Promise.race(promises).then(function(price){
+    console.log(price);
 })
+
+// Promise.all(promises).then(function(resolvedPromises){
+//     console.log(resolvedPromises);
+// }).catch(function(error){
+//     console.log(error);
+// })
 
 
 // Classic callback
