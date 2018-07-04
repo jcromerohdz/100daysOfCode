@@ -30,8 +30,8 @@
 //JS promises iterables
 let price = new Promise(function(resolve, reject){
     setTimeout(function(){
-        resolve("Price A");
-    }, 300);
+        reject("Price A Rejected");
+    }, 900);
 })
 
 let slowprice = new Promise(function(resolve, reject){
@@ -48,6 +48,8 @@ let promises = [price, slowprice];
 
 Promise.race(promises).then(function(price){
     console.log(price);
+}).catch(function(error){
+    console.log(error);
 })
 
 // Promise.all(promises).then(function(resolvedPromises){
