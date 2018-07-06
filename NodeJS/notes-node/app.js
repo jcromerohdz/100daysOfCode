@@ -5,11 +5,30 @@ const os = require('os');
 const _ = require('lodash');
 const notes = require('./notes.js');
 
-console.log(_.isString(true));
-console.log(_.isString('Christian'));
 
-let filteredArray = _.uniq(["jose", "jose", 1, 2, 2, 4, 5]);
-console.log(filteredArray);
+//Getting input from the user
+let command = process.argv[2]
+console.log('Command: ', command);
+
+if (command === "add") {
+  console.log("Adding new note");
+} else if (command === "list") {
+  console.log("Listing all notes");
+} else if (command == "read") {
+  console.log("Reading the note");
+} else if (command == "remove") {
+  console.log("Remove the note");
+} else{
+    console.log("Command not recognized");
+}
+
+
+
+// console.log(_.isString(true));
+// console.log(_.isString('Christian'));
+
+// let filteredArray = _.uniq(["Chris", "Chris", 1, 2, 2, 4, 5]);
+// console.log(filteredArray);
 
 // var  res = notes.addNote();
 // console.log(res);
